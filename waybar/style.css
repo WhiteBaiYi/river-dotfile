@@ -1,0 +1,89 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family:otf-font-awesome Roboto, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    min-height: 0;
+}
+#window {color:white; }
+#window.focused
+#tags button {background:#303446;color:white;}
+#tags button.occupied{background:#303446;color:white;}
+#tags button.focused{background:#303446;color:rgba(238, 130, 238,1);}
+#tags button.urgent{background:#303446;color:white;}
+window#waybar {
+    background:rgba(48,52,70,0.8);
+/*    border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+    color: white;
+}
+
+tooltip {
+  background: rgba(81,87,109, 0.5);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+tooltip label {
+  color: white;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#mode, #clock, #battery {
+    padding: 0 10px;
+}
+
+#mode {
+    background: #303446;
+    border-bottom: 3px solid white;
+}
+
+#clock {
+    background-color: #303446;
+}
+
+#battery {
+    background-color: #303446;
+    color: white;
+}
+
+#battery.charging {
+    color: white;
+    background-color: #303446;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#tray{background:#303446;}
+#network{background:#303446;}
+#network.disabled{background:#303446;}
+#network.disconnected{background:#303446;}
+#network.linked{background:#303446;}
+#network.ethernet{background:#303446;}
+#network.wifi{background:#303446;}
+#pulseaudio{background:#303446;}
+#cpu{background:#303446;}
+#backlight{background:#303446;}
+#bluetooth{background:#303446;}

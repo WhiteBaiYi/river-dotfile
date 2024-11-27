@@ -1,0 +1,111 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 50, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    //"spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+    	"river/tags"
+    ],
+    "modules-center": [
+	"river/window"
+    ],
+    "modules-right": [
+	      "bluetooth",
+        "pulseaudio",
+        "network",
+        "cpu",
+	      "backlight",
+        "battery",
+        "clock",
+        "tray"
+    ],
+    // Modules configuration
+    "tray": {
+        "icon-size": 24,
+        "spacing": 5
+    },
+    "clock": {
+        // "timezone": "Asia/Shanghai",
+	"interval": 5,
+	"format": "󰥔  {:%H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "󰥔 {:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "󰻠  {usage}% ",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "  {capacity}% ",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["  ", "  ", "  ", "  ", "  "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+        "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  ({signalStrength}%)  ",
+        "format-ethernet": "  {ipaddr}/{cidr} ",
+        "tooltip-format": "󰑩  {ifname} via {gwaddr} ",
+        "format-linked": "󱦂  {ifname} (No IP) ",
+        "format-disconnected": "⚠ Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon}  {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": " {volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": "",
+            "car": "",
+            "default": ["", " ", " "]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ true",
+	"on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ false"
+    },
+"river/tags": {
+	"num-tags": 5,
+        "tag-labels": [" ", " ", " ", " "," "]
+    },
+    "river/window": {
+    "format": "   {}",
+    "max-length": 91
+},
+"backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}% ",
+    "format-icons": [" ", " "]
+},
+"bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": " {status}",
+	"format-disabled": "", // an empty format will hide the module
+	"format-connected": " {num_connections} " ,
+	"on-click": "exec bluebeery",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+}
+}
